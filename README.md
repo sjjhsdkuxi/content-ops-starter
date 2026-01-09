@@ -1,74 +1,96 @@
-# Content Ops Starter
+# Taekwondo Player Management System
 
-![Content Ops Starter](https://assets.stackbit.com/docs/content-ops-starter-thumb.png)
+A web application for managing Taekwondo players' records including name, date of birth, file number, and contact information.
 
-Netlify starter that's made for customization with a flexible content model, component library, [visual editing](https://docs.netlify.com/visual-editor/overview/) and [Git Content Source](https://docs.netlify.com/create/content-sources/git/).
+## Features
 
-**⚡ View demo:** [https://content-ops-starter.netlify.app/](https://content-ops-starter.netlify.app/)
+- **Player Management**: Add, view, edit, and delete player records
+- **Player Information**: Store name, date of birth (DOB), file number, and contact number
+- **Modern UI**: Clean and responsive user interface
+- **RESTful API**: Backend API for all player operations
 
-## Table of Contents
+## Tech Stack
 
-- [Deploying to Netlify](#deploying-to-netlify)
-- [Develop with Netlify Visual Editor Locally](#develop-with-netlify-visual-editor-locally)
-- [Building for production](#building-for-production)
-- [Setting Up Algolia Search](#setting-up-algolia-search)
-- [Next Steps](#next-steps)
-- [Support](#support)
+- **Backend**: Node.js with Express.js
+- **Frontend**: React with modern UI components
+- **Database**: SQLite (can be easily migrated to PostgreSQL/MySQL)
 
-## Deploying to Netlify
+## Project Structure
 
-If you click "Deploy to Netlify" button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/content-ops-starter)
-
-## Develop with Netlify Visual Editor Locally
-
-The typical development process is to begin by working locally. Clone this repository, then run `npm install` in its root directory.
-
-Run the Next.js development server:
-
-```txt
-cd content-ops-starter
-npm run dev
+```
+├── backend/          # Express.js API server
+│   ├── models/       # Database models
+│   ├── routes/       # API routes
+│   ├── controllers/  # Business logic
+│   └── server.js     # Entry point
+├── frontend/         # React application
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── App.js
+│   └── package.json
+└── README.md
 ```
 
-Install the [Netlify Visual Editor CLI](https://www.npmjs.com/package/@stackbit/cli). Then open a new terminal window in the same project directory and run the Netlify visual editor dev server:
+## Getting Started
 
-```txt
-npm install -g @stackbit/cli
-stackbit dev
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Install backend dependencies:
+```bash
+cd backend
+npm install
 ```
 
-This outputs your own Netlify visual editor URL. Open this, register, or sign in, and you will be directed to Netlify's visual editor for your new project.
-
-![Next.js Dev + Visual Editor Dev](https://assets.stackbit.com/docs/next-dev-stackbit-dev.png)
-
-## Building for production
-
-To build a static site for production, run the following command
-
-```shell
-npm run build
+2. Install frontend dependencies:
+```bash
+cd frontend
+npm install
 ```
 
-## Setting Up Algolia Search
+### Running the Application
 
-This starter includes Algolia search integration. To set it up:
+1. Start the backend server:
+```bash
+cd backend
+npm start
+```
+The API will run on http://localhost:3001
 
-1. Create an [Algolia](https://www.algolia.com/) account
-2. Create a new application and index
-3. Set the following environment variables:
-   - `NEXT_PUBLIC_ALGOLIA_APP_ID` - Your Algolia application ID
-   - `NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY` - Your Algolia search-only API key
-   - `NEXT_PUBLIC_ALGOLIA_INDEX_NAME` - Your index name
+2. Start the frontend development server:
+```bash
+cd frontend
+npm start
+```
+The app will open in your browser at http://localhost:3000
 
-## Next Steps
+## API Endpoints
 
-Here are a few suggestions on what to do next if you're new to Netlify visual editor:
+- `GET /api/players` - Get all players
+- `GET /api/players/:id` - Get a specific player
+- `POST /api/players` - Create a new player
+- `PUT /api/players/:id` - Update a player
+- `DELETE /api/players/:id` - Delete a player
 
-- Learn [Netlify visual editor overview](https://docs.netlify.com/visual-editor/visual-editing/)
-- Check [Netlify visual editor reference documentation](https://visual-editor-reference.netlify.com/)
+## Player Data Model
 
-## Support
+```javascript
+{
+  id: Number,
+  name: String,
+  dob: Date,
+  fileNumber: String,
+  contactNumber: String,
+  createdAt: Date,
+  updatedAt: Date
+}
+```
 
-If you get stuck along the way, get help in our [support forums](https://answers.netlify.com/).
+## License
+
+MIT
